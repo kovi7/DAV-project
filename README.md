@@ -1,3 +1,4 @@
 # COVID-19 analysis in France
 
-### trends for 2 periods: 2020-2022 & 2022-2024 
+### Source of data
+https://www.data.gouv.fr/fr/datasets/donnees-hospitalieres-relatives-a-lepidemie-de-covid-19/
