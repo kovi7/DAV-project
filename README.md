@@ -1,3 +1,3 @@
-#COVID-19 analysis in France
+# COVID-19 analysis in France
 
-trends for 2 periods: 2020-2022 & 2022-2024 
+### trends for 2 periods: 2020-2022 & 2022-2024 
