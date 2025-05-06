@@ -13,78 +13,14 @@ data['date'] = pd.to_datetime(data['date'])
 tab_by_reg = PrettyTable()
 tab_by_reg.field_names = ["Region", "Hospitalizations"]
 
-
-
-# data['month'] = data['date'].dt.to_period('M')
-
-# data_by_reg_month = data.groupby(['lib_reg', 'month'])['hosp'].sum().reset_index()
-# print(data_by_reg_month.head())
-
-# data_by_reg_month['year'] = data_by_reg_month['month'].dt.year
-# data_by_reg_month['month_only'] = data_by_reg_month['month'].dt.month
-
-# # Aggregate data to ensure only one point per year per month
-# data_by_month_year = data_by_reg_month.groupby(['year', 'month_only'])['hosp'].sum().reset_index()
-
-# # Create the scatter plot
-# plt.figure(figsize=(12, 6))
-# sns.scatterplot(
-#     data=data_by_month_year,
-#     x='month_only',
-#     y='hosp',
-#     hue='year',
-#     palette='viridis',
-#     alpha=0.7
-# )
-# #do zmiany:
-# '''
-# 1. większe punkty (bardziej widoczne)
-# 2. skrót wilkości liczby hospitalizacji (mln, itp)
-# 3. lepsze kolory
-# 4. tytuły
-# 5. poprawa osi
-# 6. analogiczny wykres ale z regionami???'''
-
-# # Customize the plot
-# plt.title('Monthly Hospitalizations by Year', fontsize=16)
-# plt.xlabel('Month', fontsize=12)
-# plt.ylabel('Number of Hospitalizations', fontsize=12)
-# plt.xticks(ticks=range(1, 13), labels=[
-#     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-#     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-# ])
-# plt.legend(title='Year', fontsize=10)
-# plt.grid(axis='y', linestyle='--', alpha=0.7)
-
-# # Show the plot
-# plt.tight_layout()
-
-
-# # Add a column for the day of the year
-
-# data_by_day_year = data.groupby(['year','date','day_of_year'])['hosp'].sum().reset_index()
-
-# # Create the scatter plot
-# plt.figure(figsize=(12, 6))
-# sns.scatterplot(
-#     data=data_by_day_year,
-#     x='day_of_year',
-#     y='hosp',
-#     hue='year',
-#     palette='viridis',
-#     alpha=0.7
-# )
-
 data['day_of_year'] = data['date'].dt.day_of_year
 data['month_name'] = data['date'].dt.strftime('%B')
 data['month_num'] = data['date'].dt.month
 data['year'] = data['date'].dt.year
 
 # Group by year, month, and day
-# This will give us total hospitalizations for each day of each month in each year
 data_by_day_month = data.groupby(['year', 'day_of_year','month_num', 'month_name'])['hosp'].sum().reset_index()
 
-# Prepare data for Plotly: one trace per year
 plot_data = []
 for year, group in data_by_day_month.groupby('year'):
     plot_data.append(go.Scatter(
@@ -96,7 +32,6 @@ for year, group in data_by_day_month.groupby('year'):
         showlegend=True
     ))
 
-# Calculate ticks for 1st and 15th day of each month
 first_days = []
 mid_days = []
 day_labels = []
@@ -108,7 +43,7 @@ for month in range(1, 13):
     first_days.append(first_day)
     day_labels.append("1")
     
-    # 15th day of month (if it exists)
+    # 15th day of month
     days_in_month = calendar.monthrange(2023, month)[1]
     if days_in_month >= 15:
         mid_day = pd.Timestamp(f'2023-{month:02d}-15').day_of_year
