@@ -1,4 +1,5 @@
 import pandas as pd
+from prettytable import PrettyTable
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
