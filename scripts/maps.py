@@ -3,13 +3,15 @@ import plotly.express as px
 import json
 from urllib.request import urlopen
 
+####do poprawy
+# zmiana na właściwe parametry i zmiana nazw!!!!!!!!
 #data
 df = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', header=0, low_memory=False)
 
 deaths_by_dep = df.groupby('dep')['incid_dchosp'].sum().reset_index()
 deaths_by_dep.columns = ['dep', 'total_deaths']
 
-cases_by_dep = df.groupby('dep')['pos'].sum().reset_index()
+cases_by_dep = df.groupby('dep')['tx_incid'].sum().reset_index()
 cases_by_dep.columns = ['dep', 'total_cases']
 
 merged_data = pd.merge(deaths_by_dep, cases_by_dep, on='dep')
@@ -86,7 +88,7 @@ def create_scatter_map(data, value_column, title, color_scale, mainland_only=Tru
         color=value_column,
         hover_name="dep_name",
         text="text",
-        size_max=50,
+        size_max=40,
         zoom=5.25,
         color_continuous_scale=color_scale,
         title=title,
@@ -132,7 +134,7 @@ death_map = create_scatter_map(
 case_map = create_scatter_map(
     merged_data, 
     'total_cases', 
-    'COVID-19 Total Cases in Metropolitan France by Department', 
+    'COVID-19 Total Cases per 100k residents in Metropolitan France by Department', 
     'Blues'
 )
 

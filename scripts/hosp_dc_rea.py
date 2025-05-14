@@ -3,7 +3,7 @@ import plotly.express as px
 
 def main():
     # data
-    data = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv')
+    data = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', low_memory=False)
     data['date'] = pd.to_datetime(data['date'])
 
     #gouping by week
@@ -31,6 +31,17 @@ def main():
             'week': 'Date'
         }
     )
+    
+    fig.add_vrect(x0="2020-03-17", x1="2020-05-11", 
+                  fillcolor="purple", opacity=0.2, line_width=0, 
+                  annotation_text="First Lockdown",annotation_position="top left")
+    fig.add_vrect(x0="2020-10-30", x1="2020-12-15", 
+                  fillcolor="purple", opacity=0.2, line_width=0, 
+                  annotation_text="Second Lockdown",annotation_position="top left")
+    fig.add_vrect(x0="2021-04-03", x1="2021-05-03", 
+                  fillcolor="purple", opacity=0.2, line_width=0, 
+                  annotation_text="Third Lockdown",annotation_position="top left")
+
 
     fig.update_layout(
         xaxis=dict(
@@ -55,6 +66,7 @@ def main():
             x=0.5,
             xanchor='center',
         ),
+        font = dict(size = 18)
     )
     fig.write_html('plots/hosp_dc_rea.html')
     fig.show()
