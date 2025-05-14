@@ -7,12 +7,13 @@ from urllib.request import urlopen
 # zmiana na właściwe parametry i zmiana nazw!!!!!!!!
 #data
 df = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', header=0, low_memory=False)
+df['tx_incid'] = df['tx_incid'] /100 #now it's 1 case per 100k residents
 
 deaths_by_dep = df.groupby('dep')['incid_dchosp'].sum().reset_index()
 deaths_by_dep.columns = ['dep', 'total_deaths']
 
 cases_by_dep = df.groupby('dep')['tx_incid'].sum().reset_index()
-cases_by_dep.columns = ['dep', 'total_cases']
+cases_by_dep.columns = ['dep', 'total_cases_per_100k']
 
 merged_data = pd.merge(deaths_by_dep, cases_by_dep, on='dep')
 merged_data['dep'] = merged_data['dep'].astype(str)
@@ -47,11 +48,11 @@ for feature in france_geojson['features']:
 
 
 def format_number(num):
-    if num >= 1000000:
-        return f"{int(num/1000000)}M"
-    elif num >= 1000:
-        return f"{int(num/1000)}k"
-    else:
+    # if num >= 1000000:
+    #     return f"{int(num/1000000)}M"
+    # elif num >= 1000:
+    #     return f"{int(num/1000)}k"
+    # else:
         return f"{int(num)}"
 
 def create_scatter_map(data, value_column, title, color_scale, mainland_only=True):
@@ -88,7 +89,7 @@ def create_scatter_map(data, value_column, title, color_scale, mainland_only=Tru
         color=value_column,
         hover_name="dep_name",
         text="text",
-        size_max=40,
+        size_max=50,
         zoom=5.25,
         color_continuous_scale=color_scale,
         title=title,
@@ -133,7 +134,7 @@ death_map = create_scatter_map(
 # cases map
 case_map = create_scatter_map(
     merged_data, 
-    'total_cases', 
+    'total_cases_per_100k', 
     'COVID-19 Total Cases per 100k residents in Metropolitan France by Department', 
     'Blues'
 )

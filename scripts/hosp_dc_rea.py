@@ -3,13 +3,14 @@ import plotly.express as px
 
 def main():
     # data
-    data = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', low_memory=False)
+    data = pd.read_csv('data/table-indicateurs-open-data-france-2023-06-30-17h59.csv', low_memory=False)
     data['date'] = pd.to_datetime(data['date'])
+
 
     #gouping by week
     data['week'] = data['date'].dt.to_period('W').apply(lambda r: r.start_time)
 
-    columns_to_plot = ['incid_dchosp', 'incid_hosp', 'incid_rea']
+    columns_to_plot = ['incid_dchosp', 'incid_hosp', 'incid_rea', 'tx_incid']
     data = data.groupby('week', as_index=False)[columns_to_plot].sum()
 
     data_long = data.melt(id_vars='week', value_vars=columns_to_plot, 
@@ -18,7 +19,8 @@ def main():
     category_labels = {
         'incid_dchosp': 'Deaths',
         'incid_hosp': 'Hospitalisations',
-        'incid_rea': 'Reanimations'
+        'incid_rea': 'Reanimations',
+        'tx_incid': 'Cases per 100k residents'
     }
     data_long['Category'] = data_long['Category'].map(category_labels)
 
