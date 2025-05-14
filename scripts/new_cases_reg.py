@@ -2,14 +2,8 @@ import pandas as pd
 import plotly.express as px
 
 def main():
-
 	data = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', usecols = ['date','lib_reg','TO', 'pos'])
 	data['date'] = pd.to_datetime(data['date'])
-
-	data['day_of_year'] = data['date'].dt.day_of_year
-	data['month_name'] = data['date'].dt.strftime('%B')
-	data['month_num'] = data['date'].dt.month
-	data['year'] = data['date'].dt.year
 
 	fig = px.bar(data, x="lib_reg", y="pos", color="lib_reg",
 		animation_frame="date", animation_group="lib_reg") 
@@ -26,15 +20,19 @@ def main():
 	))
 
 	fig = px.line(data, x = 'date',y="pos", color="lib_reg",
-		range_x=[data["date"].min(),data["date"].max()])
+		range_x=[data["date"].min(),data["date"].max()], labels={
+            'lib_reg': 'Region',
+            'pos': 'Number of new cases',
+            'date': 'Date'
+		})
 
 	fig.update_layout(
 		xaxis=dict(
-		title=dict(text='Date', font = dict(size=20)),
+		title=dict(text='Date', font = dict(size=25)),
 		tickfont = dict(size=18),
 		),
 		yaxis=dict(
-			title=dict(text='Number of new cases', font = dict(size=20)),
+			title=dict(text='Number of new cases', font = dict(size=25)),
 			tickfont = dict(size=18)
 		),
 		legend=dict(
@@ -46,7 +44,7 @@ def main():
        		itemsizing="constant"
 		),
 		title=dict(
-			text='Daily number of new COVID-19 cases in France per Region',
+			text='Daily number of corfirmed new COVID-19 cases in France per Region',
 			font=dict(size=30, weight='bold'),
 			x=0.5,
 			xanchor='center',
