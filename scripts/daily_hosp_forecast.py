@@ -40,7 +40,7 @@ def main():
     model_fit = model.fit()
 
     # Model forecasting with confidence intervals
-    forecast_result = model_fit.get_forecast(steps=1000, alpha=0.05)
+    forecast_result = model_fit.get_forecast(steps=1000)
     predictions = forecast_result.predicted_mean
     conf_int = forecast_result.conf_int()
     
@@ -58,7 +58,7 @@ def main():
     # Confidence interval shading
     lower = conf_int.iloc[:, 0]
     upper = conf_int.iloc[:, 1]
-    plt.fill_between(future_dates, lower, upper, color='red', alpha=0.2, label='60% CI')
+    plt.fill_between(future_dates, lower, upper, color='red', alpha=0.2, label='95% CI')
 
     plt.title('France Hospitalizations Forecast', fontsize=16, weight ='bold')
     plt.xlabel('Date', fontsize=14)
