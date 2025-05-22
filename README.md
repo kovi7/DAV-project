@@ -4,4 +4,5 @@
 https://www.data.gouv.fr/fr/datasets/synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19/
 https://www.data.gouv.fr/fr/datasets/donnees-de-laboratoires-pour-le-depistage-a-compter-du-18-05-2022-si-dep/
 https://www.data.gouv.fr/fr/datasets/departements-de-france/
+https://github.com/owid/covid-19-data/tree/master/public/data
 
