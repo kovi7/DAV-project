@@ -4,7 +4,7 @@ import plotly.express as px
 
 def main():
     # Load data
-    france = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', usecols = ['date','lib_reg','TO','hosp','rea', 'rad','dchosp','reg_rea'])
+    france = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', usecols=['date', 'lib_reg', 'TO', 'hosp', 'rea', 'rad', 'dchosp', 'reg_rea'])
     poland = pd.read_csv('data/poland_covid_data.csv')
 
     # Data preparation 
@@ -28,27 +28,38 @@ def main():
     poland_filtered = poland[(poland['date'] >= start_date) & (poland['date'] <= end_date)]
     france_filtered = france_series[(france_series['date'] >= start_date) & (france_series['date'] <= end_date)]
 
-    # Combine two country for plotting
+    # Combine two countries for plotting
     combined = pd.concat([poland_filtered, france_filtered])
+
+    # Approximate populations for normalization
+    population = {
+        'France': 67_000_000,  
+        'Poland': 38_000_000   
+    }
+
+    combined['hosp_per_100k'] = combined.apply(
+        lambda row: (row['hosp'] / population[row['country']]) * 100_000,
+        axis=1
+    )
 
     # Plotting
     fig = px.line(combined,
                 x='date',
-                y='hosp',
+                y='hosp_per_100k',  
                 color='country',
-                title='COVID-19 Hospitalizations: Poland vs France',
+                title='COVID-19 Hospitalizations per 100,000 People: Poland vs France',
                 labels={
-                    'date': 'Data',
-                    'hosp': 'Hospitalizations',
+                    'date': 'Date',
+                    'hosp_per_100k': 'Hospitalizations per 100,000',
                     'country': 'Country'
                 })
 
     fig.update_layout(
-        title_text='COVID-19 Hospitalizations: Poland vs France',
+        title_text='COVID-19 Hospitalizations per 100,000 People: Poland vs France',
         title_font=dict(size=30, weight='bold'),
         title={
-            'y':0.95,
-            'x':0.50,
+            'y': 0.95,
+            'x': 0.50,
             'xanchor': 'center',
             'yanchor': 'top'})
 
@@ -59,23 +70,19 @@ def main():
         gridcolor='lightgray')
 
     fig.update_yaxes(
-        title_text='Number of Hospitalizations',
+        title_text='Hospitalizations per 100,000 People',
         title_font=dict(size=18),
         showgrid=True,
         gridcolor='lightgray')
 
     fig.update_layout(
-        legend=dict(
-            font=dict(size=20)))
-
-    fig.update_layout(
+        legend=dict(font=dict(size=20)),
         plot_bgcolor='white')
     
-    fig.update_traces(line=dict
-                  (width=5))
+    fig.update_traces(line=dict(width=5))
 
-    fig.write_html('plots/hosp_pol_fra_comparison.html')
+    fig.write_html('plots/hosp_pol_fra_comparison_per_capita.html')
     fig.show()
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

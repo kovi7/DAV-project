@@ -18,8 +18,15 @@ def main():
     # Log-transformation
     series = data.groupby('date')['hosp'].sum()
 
+    # Per capita normalization 
+    FRANCE_POPULATION = 67_000_000  # Approximate population of France 
+    SCALING_FACTOR = 100_000  
+
+    # Compute hospitalizations per 100k
+    series_per_capita = (series / FRANCE_POPULATION) * SCALING_FACTOR
+
     # Check stationarity (ADF test)
-    result = adfuller(series)
+    result = adfuller(series_per_capita)
     print(f"ADF statistic: {result[0]:.3f}, p-value: {result[1]:.3f}")  # data is stationary
 
     # # ACF and PACF plot 
@@ -30,8 +37,8 @@ def main():
     # plt.show()
 
     # Split the data 
-    train_size = int(len(series) - 720) # max len = 1200
-    train, test = series[:train_size], series[train_size:]
+    train_size = int(len(series_per_capita) - 720) # max len = 1200
+    train, test = series_per_capita[:train_size], series_per_capita[train_size:]
 
     # Model fitting
     model = SARIMAX(train, order=(1, 0, 2), seasonal_order=(1, 0, 1, 7), enforce_stationarity=True)  
@@ -46,11 +53,11 @@ def main():
     rmse = sqrt(mean_squared_error(test, predictions))
     print(f'RMSE: {rmse:.2f}')
 
-    future_dates = pd.date_range(start=series.index[-1], periods=len(predictions)+1)[1:]
+    future_dates = pd.date_range(start=series_per_capita.index[-1], periods=len(predictions)+1)[1:]
 
     # Plotting
     plt.figure(figsize=(12, 6))
-    plt.plot(series.index, series, label='Actual', color='blue')
+    plt.plot(series_per_capita.index, series_per_capita, label='Actual', color='blue')
     plt.plot(future_dates, predictions, label='Predicted', color='red', linestyle='--')
     
     # Confidence interval shading
@@ -60,18 +67,7 @@ def main():
 
     plt.title('France Hospitalizations Forecast', fontsize=16, weight ='bold')
     plt.xlabel('Date', fontsize=14)
-    plt.ylabel('Hospitalizations', fontsize=14)
-
-    # Custom y-axis formatter 
-    def thousands_formatter(x, pos):
-        if x >= 1000:
-            return f'{int(x/1000)}k'
-        elif x <= -1000:
-            return f'-{int(abs(x)/1000)}k'
-        else:
-            return str(int(x))
-
-    plt.gca().yaxis.set_major_formatter(ticker.FuncFormatter(thousands_formatter))
+    plt.ylabel('Hospitalizations (per 100k people)', fontsize=14)
 
     plt.legend()
     plt.grid(True)
