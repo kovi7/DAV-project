@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import plotly.express as px
 
 def main():
@@ -10,9 +9,6 @@ def main():
 
     # Data preparation 
     france['date'] = pd.to_datetime(france['date'])
-    france['day_of_year'] = france['date'].dt.day_of_year
-    france['month_num'] = france['date'].dt.month
-    france['year'] = france['date'].dt.year
     france_series = france.groupby('date')['hosp'].sum().reset_index()
     france_series['country'] = 'France'
 
@@ -74,6 +70,9 @@ def main():
 
     fig.update_layout(
         plot_bgcolor='white')
+    
+    fig.update_traces(line=dict
+                  (width=5))
 
     fig.write_html('plots/hosp_pol_fra_comparison.html')
     fig.show()
