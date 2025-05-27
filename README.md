@@ -27,7 +27,7 @@ For Poland:
 1. France Hospitalizations Forecast (SARIMAX)
 2. France Deaths Forecast (SARIMAX)
 3. COVID-19 Deaths: Poland vs France
-4. Weekly number of new hospitalisations, deaths and reanimations in France
+4. Weekly number of new hospitalisations, deaths and reanimations in France (static & gif)
 5. COVID-19 Hospitalizations per 100,000 People: Poland vs France
 6. Daily Hospitalizations in France by Year
 7. Daily number of corfirmed new COVID-19 cases in France per Region
@@ -36,3 +36,5 @@ For Poland:
 10. COVID-19 Total Deaths per 100k Residents in Metropolitan France by Department
 11. COVID-19 Total Cases in Metropolitan France by Department 
 12. COVID-19 Total Cases per 100k residents in Metropolitan France by Department 
+13. COVID-19 hospitalizations in France
+14. COVID-19 deaths in France
