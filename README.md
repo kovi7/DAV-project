@@ -7,6 +7,7 @@ For France:
     https://www.data.gouv.fr/fr/datasets/synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19/
     https://www.data.gouv.fr/fr/datasets/donnees-de-laboratoires-pour-le-depistage-a-compter-du-18-05-2022-si-dep/
     https://www.data.gouv.fr/fr/datasets/departements-de-france/
+    https://www.legifrance.gouv.fr/loda/id/JORFTEXT000050935068?init=true&page=1&query=authentifiant+les+chiffres+des+populations+de+m%C3%A9tropole%2C+des+d%C3%A9partements+d%27outre-mer&searchField=ALL&tab_selection=all
 
 For Poland:
 
