@@ -142,9 +142,7 @@ def main():
             xanchor='center',
             font=dict(size=30, weight = 'bold')
         ),
-        margin=dict(t=150, b=30),  
-        width=1800,
-        height=900,
+        margin=dict(t=150, b=30)
     )
     fig.write_html('plots/daily_hosp.html')
     fig.show()
