@@ -144,18 +144,6 @@
     </div>
 
     <div class="plot-section">
-        <h2>Predictions</h2>
-        <div class="plot-grid">
-            <div class="plot-item">
-                <img src="plots/daily_hosp_forecast.png" alt="Daily Hospitalizations Forecast">
-            </div>
-            <div class="plot-item">
-                <img src="plots/deaths_forecast.png" alt="Deaths Forecast">
-            </div>
-        </div>
-    </div>
-
-    <div class="plot-section">
         <h2>Comparisons with Poland</h2>
         <div class="plot-grid">
             <div class="plot-item">
@@ -185,7 +173,41 @@
         <div class="plot-grid">
             <div class="plot-item">
                 <img src="plots/vaccin.png" alt="Vaccination Rate by Region">
+                <div class="plot-caption">Vaccination Rate by Region</div>
             </div>
+        </div>
+        <div style="overflow-x:auto; margin-top:32px;">
+            <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; background:#fff; margin:auto; min-width:700px;">
+                <thead style="background:#7c3aed;">
+                    <tr>
+                        <th style="color:#fff;">Region</th>
+                        <th style="color:#fff;">Total Cases</th>
+                        <th style="color:#fff;">Cases per 100</th>
+                        <th style="color:#fff;">Total Deaths</th>
+                        <th style="color:#fff;">Vaccination Rate (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Auvergne et Rhône-Alpes</td><td>4,936,842</td><td>71.32</td><td>18,403</td><td>83.8</td></tr>
+                    <tr><td>Bourgogne et Franche-Comté</td><td>1,550,459</td><td>53.98</td><td>7,508</td><td>83.1</td></tr>
+                    <tr><td>Bretagne</td><td>1,799,348</td><td>51.67</td><td>3,728</td><td>85.9</td></tr>
+                    <tr><td>Centre-Val de Loire</td><td>1,323,435</td><td>50.31</td><td>4,669</td><td>83.7</td></tr>
+                    <tr><td>Corse</td><td>204,801</td><td>58.09</td><td>540</td><td>70.6</td></tr>
+                    <tr><td>Grand Est</td><td>3,194,661</td><td>59.26</td><td>15,174</td><td>82.0</td></tr>
+                    <tr><td>Guadeloupe</td><td>209,172</td><td>53.73</td><td>1,160</td><td>40.8</td></tr>
+                    <tr><td>Guyane</td><td>98,352</td><td>34.06</td><td>416</td><td>34.1</td></tr>
+                    <tr><td>Hauts-de-France</td><td>3,446,288</td><td>62.13</td><td>13,985</td><td>82.3</td></tr>
+                    <tr><td>Martinique</td><td>232,251</td><td>63.65</td><td>1,168</td><td>43.0</td></tr>
+                    <tr><td>Mayotte</td><td>40,536</td><td>–</td><td>166</td><td>54.2</td></tr>
+                    <tr><td>Normandie</td><td>1,742,636</td><td>51.28</td><td>5,679</td><td>86.3</td></tr>
+                    <tr><td>Nouvelle Aquitaine</td><td>3,300,204</td><td>53.17</td><td>8,048</td><td>85.4</td></tr>
+                    <tr><td>Occitanie</td><td>3,559,907</td><td>59.47</td><td>9,418</td><td>81.3</td></tr>
+                    <tr><td>Pays de la Loire</td><td>2,066,837</td><td>52.4</td><td>4,732</td><td>85.4</td></tr>
+                    <tr><td>Provence-Alpes-Côte d'Azur</td><td>3,324,009</td><td>88.21</td><td>14,438</td><td>78.5</td></tr>
+                    <tr><td>Réunion</td><td>528,504</td><td>60.0</td><td>1,009</td><td>66.8</td></tr>
+                    <tr><td>Île-de-France</td><td>7,095,470</td><td>57.09</td><td>29,350</td><td>83.4</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -194,6 +216,17 @@
         <div class="plot-grid">
             <div class="plot-item">
                 <iframe src="plots/new_cases_reg.html"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="plot-section">
+        <h2>Predictions</h2>
+        <div class="plot-grid">
+            <div class="plot-item">
+                <img src="plots/daily_hosp_forecast.png" alt="Daily Hospitalizations Forecast">
+            </div>
+            <div class="plot-item">
+                <img src="plots/deaths_forecast.png" alt="Deaths Forecast">
             </div>
         </div>
     </div>
