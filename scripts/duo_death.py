@@ -28,13 +28,17 @@ ax1.set_title(
 )
 ax1.get_yaxis().set_major_formatter(mtick.FuncFormatter(lambda x, _: f'{int(x/1000)}k'))
 ax1.xaxis.set_visible(True)
+ax1.tick_params(axis='both', labelsize=14)
 
 # lower plot
 ax2.bar(df_fr['date'], df_fr['incid_rad'], color='crimson', width=1)
 ax2.set_ylabel('New deaths', fontsize=16)
+ax2.set_xlabel('Date', fontsize=16)
 ax2.grid(True, which='both', linestyle=':', linewidth=0.5)
 ax2.set_xlabel('Date')
 ax2.get_yaxis().set_major_formatter(mtick.FuncFormatter(lambda x, _: f'{int(x/1000)}k'))
+ax2.tick_params(axis='both', labelsize=14)
+
 
 plt.tight_layout()
 plt.savefig('plots/deaths_france.png', bbox_inches='tight')
