@@ -7,7 +7,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from sklearn.metrics import mean_squared_error
-from math import sqrt
+from math import sqrt 
 
 def main():
     # Load data
@@ -18,7 +18,6 @@ def main():
 
     france_deaths = france.groupby('date')['incid_dchosp'].sum().reset_index()
     france_deaths.columns = ['date', 'daily_deaths']
-    # france_deaths['total_deaths'] = france_deaths['daily_deaths'].cumsum()
     france_deaths = france_deaths.set_index('date')
     daily_deaths = france_deaths['daily_deaths']
 
@@ -64,7 +63,7 @@ def main():
 
     plt.title('France Deaths Forecast', fontsize=16, weight ='bold')
     plt.xlabel('Date', fontsize=14)
-    plt.ylabel('Deaths', fontsize=14)
+    plt.ylabel('Deaths (per 100k people)', fontsize=14)
 
     plt.legend()
     plt.grid(True)
