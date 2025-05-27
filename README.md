@@ -15,17 +15,17 @@ For Poland:
 
 ## Statistics
 
-###General summary
+### General summary
 
-|Description | number | update|
-| --- | --- | --- |
-|Confirmed cases| 38,997,490 | 1 April 2025|
-|Deaths | 168,091 | 1 April 2025|
-|Fatality rate |	0.43% | 1 April 2025|
-|Total vaccinated | 54,677,680 |	1 April 2025|
+|Description | Number | 
+| --- | --- | 
+|Confirmed cases| 40,138,560 | 
+|Deaths | 167,642 |
+|Fatality rate | 0.57% |
+|Total vaccinated | 54,677,680 |
 
 
-### Region summary
+### Region summary (30.06.2023)
 |           Region           | Total Cases | Cases per 100 | Total Deaths | Vaccination Rate |
 | --- | --- | --- | --- | --- |
 |  Auvergne et Rhône-Alpes   |   4936842   |     71.32     |    18403     |       83.8       |
