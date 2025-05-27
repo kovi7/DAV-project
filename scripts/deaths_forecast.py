@@ -69,7 +69,7 @@ def main():
     plt.legend()
     plt.grid(True)
 
-    # plt.savefig('plots/deaths_forecast.png', dpi=300)
+    plt.savefig('plots/deaths_forecast.png', dpi=300)
     plt.show()
 
 if __name__=='__main__':
