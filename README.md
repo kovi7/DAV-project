@@ -3,20 +3,23 @@ Project for Data analysis and visualization course that shows some statistics an
 
 ## Data sources
 For France:
+
     https://www.data.gouv.fr/fr/datasets/synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19/
     https://www.data.gouv.fr/fr/datasets/donnees-de-laboratoires-pour-le-depistage-a-compter-du-18-05-2022-si-dep/
     https://www.data.gouv.fr/fr/datasets/departements-de-france/
 
 For Poland:
+
     https://github.com/owid/covid-19-data/tree/master/public/data
 
 ## General statistics
 
-Description | number | update
-Confirmed cases| 38,997,490 | 1 April 2025
-Deaths | 168,091 | 1 April 2025
-Fatality rate |	0.43% |
-Total vaccinated | 54,677,680 |	1 April 2025
+|Description | number | update|
+| --- | --- | --- |
+|Confirmed cases| 38,997,490 | 1 April 2025|
+|Deaths | 168,091 | 1 April 2025|
+|Fatality rate |	0.43% | 1 April 2025|
+|Total vaccinated | 54,677,680 |	1 April 2025|
 
 ## Plots
 
