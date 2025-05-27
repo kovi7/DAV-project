@@ -33,4 +33,6 @@ For Poland:
 7. Daily number of corfirmed new COVID-19 cases in France per Region
 8. COVID-19 vaccination coverage in France
 9. COVID-19 Total Deaths in Metropolitan France by Department
-10. COVID-19 Total Cases per 100k residents in Metropolitan France by Department 
+10. COVID-19 Total Deaths per 100k Residents in Metropolitan France by Department
+11. COVID-19 Total Cases in Metropolitan France by Department 
+12. COVID-19 Total Cases per 100k residents in Metropolitan France by Department 
