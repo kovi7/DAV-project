@@ -176,7 +176,20 @@
                 <div class="plot-caption">Vaccination Rate by Region</div>
             </div>
         </div>
-        <div style="overflow-x:auto; margin-top:32px;">
+        
+
+    <div class="plot-section">
+        <h2>New Cases by Region</h2>
+        <div class="plot-grid">
+            <div class="plot-item">
+                <iframe src="plots/new_cases_reg.html"></iframe>
+            </div>
+        </div>
+    </div>
+    <div style="overflow-x:auto; margin-top:32px;">
+            <div style="text-align:center; font-size:1.25em; font-weight:bold; margin-bottom:10px;">
+                COVID-19 Cases, Deaths, and Vaccination Rates by Region
+            </div>
             <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; background:#fff; margin:auto; min-width:700px;">
                 <thead style="background:#bfa5f6;">
                     <tr>
@@ -210,23 +223,23 @@
             </table>
         </div>
     </div>
-
     <div class="plot-section">
-        <h2>New Cases by Region</h2>
-        <div class="plot-grid">
-            <div class="plot-item">
-                <iframe src="plots/new_cases_reg.html"></iframe>
-            </div>
-        </div>
-    </div>
-    <div class="plot-section">
-        <h2>Predictions</h2>
+        <h2>Predictions with Sarimax</h2>
         <div class="plot-grid">
             <div class="plot-item">
                 <img src="plots/daily_hosp_forecast.png" alt="Daily Hospitalizations Forecast">
             </div>
             <div class="plot-item">
                 <img src="plots/deaths_forecast.png" alt="Deaths Forecast">
+            </div>
+        </div>
+    </div>
+    <div class="plot-section" style="margin-top: 60px;">
+        <div style="text-align:center;">
+            <div style="font-size:1em; margin-bottom:8px; color:#444;">
+                For more details and code, see our
+                <a href="https://github.com/kovi7/DAV-project" target="_blank" style="color:#7c3aed; text-decoration:underline;">
+                    GitHub
             </div>
         </div>
     </div>
