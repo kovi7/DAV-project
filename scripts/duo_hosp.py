@@ -3,13 +3,11 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # data
-df = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv', parse_dates=['date'])
+df = pd.read_csv('data/table-indicateurs-open-data-dep-2023-06-30-17h59.csv')
+df['date']=pd.to_datetime(df['date'])
 
-df_fr = df.groupby('date', as_index=False)['incid_hosp'].sum()
+df_fr = df.groupby('date')['incid_hosp'].sum().reset_index()
 df_fr = df_fr.sort_values('date')
-
-# NA replacement
-df_fr['incid_hosp'] = df_fr['incid_hosp'].fillna(0)
 
 df_fr['cum_hosp'] = df_fr['incid_hosp'].cumsum()
 
@@ -22,7 +20,7 @@ ax1.grid(True, which='both', linestyle=':', linewidth=0.5)
 ax1.set_title('COVID-19 hospitalizations in France {} - {}'.format(        df_fr['date'].min().strftime('%d.%m.%Y'),
         df_fr['date'].max().strftime('%d.%m.%Y')
     ), fontsize=25, fontweight='bold')
-ax1.get_yaxis().set_major_formatter(mtick.FuncFormatter(lambda x, _: f'{int(x/1000)}k'))
+ax1.get_yaxis().set_major_formatter(mtick.FuncFormatter(lambda x, _: f'{int(x/1000000)}M'))
 ax1.xaxis.set_visible(True)
 ax1.tick_params(axis='both', labelsize=14)
 
