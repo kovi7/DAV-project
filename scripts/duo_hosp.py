@@ -17,16 +17,16 @@ fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 7), sharex=True, gridspec_kw={
 ax1.plot(df_fr['date'], df_fr['cum_hosp'], color='orange')
 ax1.set_ylabel('Cumulated hospitalizations', fontsize=16)
 ax1.grid(True, which='both', linestyle=':', linewidth=0.5)
-ax1.set_title('COVID-19 hospitalizations in France {} - {}'.format(        df_fr['date'].min().strftime('%d.%m.%Y'),
+ax1.set_title('COVID-19 hospitalizations in France {} - {}'.format(df_fr['date'].min().strftime('%d.%m.%Y'),
         df_fr['date'].max().strftime('%d.%m.%Y')
     ), fontsize=25, fontweight='bold')
 ax1.get_yaxis().set_major_formatter(
-    mtick.FuncFormatter(lambda x, _: f'{x/1_000}k' if x <1_000_000 else f'{int(x/1_000_000)}M')
-)ax1.xaxis.set_visible(True)
+    mtick.FuncFormatter(lambda x, _: f'{x/1_000}k' if x <1_000_000 else f'{int(x/1_000_000)}M'))
+ax1.xaxis.set_visible(True)
 ax1.tick_params(axis='both', labelsize=14)
 
 
-# lower plot
+# lower plot$
 ax2.bar(df_fr['date'], df_fr['incid_hosp'], color='orange', width=1)
 ax2.set_ylabel('New hospitalizations', fontsize=16)
 ax2.set_xlabel('Date', fontsize=16)
