@@ -20,8 +20,9 @@ ax1.grid(True, which='both', linestyle=':', linewidth=0.5)
 ax1.set_title('COVID-19 hospitalizations in France {} - {}'.format(        df_fr['date'].min().strftime('%d.%m.%Y'),
         df_fr['date'].max().strftime('%d.%m.%Y')
     ), fontsize=25, fontweight='bold')
-ax1.get_yaxis().set_major_formatter(mtick.FuncFormatter(lambda x, _: f'{int(x/1000000)}M'))
-ax1.xaxis.set_visible(True)
+ax1.get_yaxis().set_major_formatter(
+    mtick.FuncFormatter(lambda x, _: f'{x/1_000}k' if x <1_000_000 else f'{int(x/1_000_000)}M')
+)ax1.xaxis.set_visible(True)
 ax1.tick_params(axis='both', labelsize=14)
 
 
