@@ -1,5 +1,8 @@
 # COVID-19 analysis in France
-Project for Data analysis and visualization course that shows some statistics and plots about COVID-19 pandemic in France. We focused on the level of infections and deaths, as well as the response to the disease: vaccinations and hospitalization.
+Project for Data analysis and visualization course that shows some statistics and plots about COVID-19 pandemic in France. We focused on the level of infections and deaths, as well as the response to the disease: vaccinations and hospitalization. The data covers the period from 18.03.2020 to 30.06.2023.
+
+## Authors
+Julia Świątkowska, Justyna Kowalska
 
 ## Data sources
 For France:
@@ -50,17 +53,35 @@ For Poland:
 
 ## Plots
 
-1. France Hospitalizations Forecast (SARIMAX)
-2. France Deaths Forecast (SARIMAX)
-3. COVID-19 Deaths: Poland vs France
-4. Weekly number of new hospitalisations, deaths and reanimations in France (static & gif)
-5. COVID-19 Hospitalizations per 100,000 People: Poland vs France
-6. Daily Hospitalizations in France by Year
-7. Daily number of corfirmed new COVID-19 cases in France per Region
-8. COVID-19 vaccination coverage in France
-9. COVID-19 Total Deaths in Metropolitan France by Department
-10. COVID-19 Total Deaths per 100k Residents in Metropolitan France by Department
-11. COVID-19 Total Cases in Metropolitan France by Department 
-12. COVID-19 Total Cases per 100k residents in Metropolitan France by Department 
-13. COVID-19 hospitalizations in France
-14. COVID-19 deaths in France
+### Mortality
+
+![COVID-19 deaths in France](plots/deaths_france.png)
+
+### Hospitalisations
+
+![COVID-19 hospitalizations in France](plots/hospitalizations_france.png)
+
+### Vaccination rate 
+
+![COVID-19 vaccination coverage in France](plots/vaccin.png)
+
+
+### Forecasts
+![France Hospitalizations Forecast (SARIMAX)](plots/daily_hosp_forecast.png)
+![France Deaths Forecast (SARIMAX)](plots/deaths_forecast.png)
+
+### Comparison with Poland
+
+![COVID-19 Deaths: Poland vs France](plots/deaths_pl_vs_fra.png)
+![COVID-19 Hospitalisations: Poland vs France](plots/hosp_pol_fra_comparison_per_capita.png)
+
+
+### Others
+1. Weekly number of new hospitalisations, deaths and reanimations in France (static & gif)
+2. Daily Hospitalizations in France by Year
+3. Daily number of corfirmed new COVID-19 cases in France per Region
+4. COVID-19 Total Deaths in Metropolitan France by Department
+5. COVID-19 Total Deaths per 100k Residents in Metropolitan France by Department
+6. COVID-19 Total Cases in Metropolitan France by Department
+7. COVID-19 Total Cases per 100k residents in Metropolitan France by Department 
+
